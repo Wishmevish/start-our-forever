@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Start Our Forever</title>
+
+<style>
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+}
+
+#login{margin-top:150px;}
+#main{display:none;}
+
+.typing{
+font-size:28px;
+border-right:2px solid white;
+white-space:nowrap;
+overflow:hidden;
+width:0;
+animation:typing 4s steps(40,end) forwards;
+}
+
+@keyframes typing{
+from{width:0}
+to{width:100%}
+}
+
+.fade{
+animation:fade 3s forwards;
+opacity:0;
+}
+
+@keyframes fade{
+to{opacity:1}
+}
+
+button{
+padding:15px 30px;
+font-size:20px;
+margin-top:20px;
+background:#ff3366;
+color:white;
+border:none;
+border-radius:8px;
+}
+
+#photos img{
+width:220px;
+margin:10px;
+border-radius:12px;
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="login">
+<h2>Enter Secret Code</h2>
+<input type="password" id="pass">
+<br><br>
+<button onclick="check()">Enter</button>
+</div>
+
+<div id="main">
+<h1 class="typing">Scanning your future...</h1>
+<h2 id="timeline"></h2>
+
+<div id="photos" style="display:none">
+<h1 class="fade">Prediction Result:</h1>
+<h2 class="fade">You & Me — Forever ❤️</h2>
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+
+<br>
+<button onclick="alert('Will you marry me? ❤️')">YES</button>
+</div>
+</div>
+
+<script>
+
+function check(){
+if(document.getElementById('pass').value=="143"){
+document.getElementById('login').style.display="none";
+document.getElementById('main').style.display="block";
+startTimeline();
+}
+else alert("Wrong Code");
+}
+
+let lines=[
+"2026: The day I asked you something special...",
+"2030: Traveling the world together...",
+"2045: Still laughing at the same jokes...",
+"2060: Still holding your hand..."
+];
+
+let i=0;
+
+function startTimeline(){
+let t=setInterval(()=>{
+if(i<lines.length){
+document.getElementById('timeline').innerHTML=lines[i];
+i++;
+}else{
+clearInterval(t);
+document.getElementById('photos').style.display="block";
+}
+},3000);
+}
+
+</script>
+
+</body>
+</html>
