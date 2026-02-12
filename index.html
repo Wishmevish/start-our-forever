@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Start Our Forever</title>
+<title>Unlocking Our Forever</title>
 
 <style>
 body{
@@ -10,116 +10,116 @@ background:black;
 color:white;
 font-family:Arial;
 text-align:center;
-overflow:hidden;
 }
 
-#login{margin-top:150px;}
-#main{display:none;}
-
-.typing{
-font-size:28px;
-border-right:2px solid white;
-white-space:nowrap;
-overflow:hidden;
-width:0;
-animation:typing 4s steps(40,end) forwards;
-}
-
-@keyframes typing{
-from{width:0}
-to{width:100%}
-}
-
-.fade{
-animation:fade 3s forwards;
-opacity:0;
-}
-
-@keyframes fade{
-to{opacity:1}
-}
+.screen{display:none;padding-top:120px;}
+.active{display:block;}
 
 button{
 padding:15px 30px;
-font-size:20px;
+font-size:18px;
 margin-top:20px;
 background:#ff3366;
 color:white;
 border:none;
-border-radius:8px;
+border-radius:10px;
 }
 
-#photos img{
-width:220px;
-margin:10px;
-border-radius:12px;
+input{
+padding:10px;
+font-size:18px;
 }
 </style>
 </head>
 
 <body>
 
-<audio autoplay loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div id="login">
-<h2>Enter Secret Code</h2>
-<input type="password" id="pass">
-<br><br>
-<button onclick="check()">Enter</button>
+<!-- Screen 1 -->
+<div id="s1" class="screen active">
+<h1>This page was created for someone very special…</h1>
+<h2>Avilasha, if this is you — begin our story ❤️</h2>
+<button onclick="next('s2','song1')">Begin</button>
 </div>
 
-<div id="main">
-<h1 class="typing">Scanning your future...</h1>
-<h2 id="timeline"></h2>
-
-<div id="photos" style="display:none">
-<h1 class="fade">Prediction Result:</h1>
-<h2 class="fade">You & Me — Forever ❤️</h2>
-
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-
+<!-- Screen 2 -->
+<div id="s2" class="screen">
+<h2>Where did our story begin?</h2>
+<input id="q1">
 <br>
-<button onclick="final()">YES</button>
+<button onclick="check1()">Unlock</button>
 </div>
+
+<!-- Screen 3 -->
+<div id="s3" class="screen">
+<h2>What do I call you when no one is around?</h2>
+<input id="q2">
+<br>
+<button onclick="check2()">Unlock</button>
 </div>
+
+<!-- Screen 4 -->
+<div id="s4" class="screen">
+<h2>Where did we spend our closest moments together?</h2>
+<input id="q3">
+<br>
+<button onclick="check3()">Unlock</button>
+</div>
+
+<!-- Screen 5 -->
+<div id="s5" class="screen">
+<h2>We met in 2019… just friends.</h2>
+<h3>On 9 Jan 2025… we finally spoke our hearts.</h3>
+<h3>From endless calls… to endless memories.</h3>
+<button onclick="next('s6','song4')">Continue</button>
+</div>
+
+<!-- Screen 6 -->
+<div id="s6" class="screen">
+<h2>The way you pamper me like a child… makes me feel I found home.</h2>
+<h3>I want to grow old, build everything, and live life with you and our families.</h3>
+<button onclick="next('s7','song5')">Continue</button>
+</div>
+
+<!-- Screen 7 -->
+<div id="s7" class="screen">
+<h1>Tumko pata hai na tum mere liye kya ho?</h1>
+<h1>Sath rahogi mere humesha?</h1>
+<button onclick="alert('Our forever begins today ❤️')">YES</button>
+</div>
+
+<audio id="song1" src="song1.mp3"></audio>
+<audio id="song2" src="song2.mp3"></audio>
+<audio id="song3" src="song3.mp3"></audio>
+<audio id="song4" src="song4.mp3"></audio>
+<audio id="song5" src="song5.mp3"></audio>
 
 <script>
 
-function check(){
-if(document.getElementById('pass').value=="143"){
-document.getElementById('login').style.display="none";
-document.getElementById('main').style.display="block";
-startTimeline();
-}
-else alert("Wrong Code");
+function next(id,song){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+play(song);
 }
 
-let lines=[
-"2026: The day I asked you something special...",
-"2030: Traveling the world together...",
-"2045: Still laughing at the same jokes...",
-"2060: Still holding your hand..."
-];
-
-let i=0;
-
-function startTimeline(){
-let t=setInterval(()=>{
-if(i<lines.length){
-document.getElementById('timeline').innerHTML=lines[i];
-i++;
-}else{
-clearInterval(t);
-document.getElementById('photos').style.display="block";
+function play(song){
+document.querySelectorAll('audio').forEach(a=>a.pause());
+if(song) document.getElementById(song).play();
 }
-},3000);
+
+function check1(){
+if(document.getElementById('q1').value.toLowerCase()=="college")
+next('s3','song2');
 }
-function final(){
-document.body.innerHTML =
-"<h1 style='margin-top:200px;font-size:50px;'>She Said YES ❤️</h1>";
+
+function check2(){
+let v=document.getElementById('q2').value.toLowerCase();
+if(v=="puki"||v=="bubu")
+next('s4','song3');
+}
+
+function check3(){
+if(document.getElementById('q3').value.toLowerCase()=="bike")
+next('s5','song4');
 }
 
 </script>
