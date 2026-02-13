@@ -168,8 +168,11 @@ document.body.innerHTML =
 "<h2>Vishal ❤️ Avilasha</h2>" +
 "</div>";
 
-setTimeout(()=>location.reload(),8000);
+setTimeout(()=>{
+location.href = location.href.split('?')[0] + "?restart=" + new Date().getTime();
+},6000);
 }
+
 
 
 </script>
