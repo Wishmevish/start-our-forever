@@ -24,6 +24,16 @@ color:white;
 border:none;
 border-radius:10px;
 }
+#slideshow img{
+width:260px;
+display:none;
+border-radius:12px;
+margin:10px;
+}
+
+#slideshow img.active{
+display:inline-block;
+}
 
 input{
 padding:10px;
@@ -128,6 +138,15 @@ next('s4','song3');
 function check3(){
 if(document.getElementById('q3').value.toLowerCase()=="bike")
 next('s5','song4');
+}
+let slideIndex = 0;
+
+function startSlideshow(){
+let slides = document.querySelectorAll('#slideshow img');
+slides.forEach(s => s.classList.remove('active'));
+slides[slideIndex].classList.add('active');
+slideIndex = (slideIndex + 1) % slides.length;
+setTimeout(startSlideshow, 2000);
 }
 
 </script>
