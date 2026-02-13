@@ -126,48 +126,48 @@ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 play(song);
 }
+
 function play(song){
 document.querySelectorAll('audio').forEach(a=>{
 a.pause();
 a.currentTime = 0;
 });
-
 if(song){
 let audio = document.getElementById(song);
-let playPromise = audio.play();
-if(playPromise !== undefined){
-playPromise.catch(()=>{});  // prevents browser autoplay error from stopping script
+audio.play().catch(()=>{});
 }
 }
-}
-
-
 
 function check1(){
-if(document.getElementById('q1').value.toLowerCase()=="college")
+if(document.getElementById('q1').value.toLowerCase()=="college"){
 next('s3','song2');
+}
 }
 
 function check2(){
 let v=document.getElementById('q2').value.toLowerCase();
-if(v=="puki"||v=="bubu")
+if(v=="puki"||v=="bubu"){
 next('s4','song3');
 }
+}
+
 function check3(){
 if(document.getElementById('q3').value.toLowerCase()=="bike"){
 next('s5','song4');
-setTimeout(startSlideshow, 500);
+setTimeout(startSlideshow,500);
 }
 }
-let slideIndex = 0;
+
+let slideIndex=0;
 
 function startSlideshow(){
-let slides = document.querySelectorAll('#slideshow img');
-slides.forEach(s => s.classList.remove('active'));
+let slides=document.querySelectorAll('#slideshow img');
+slides.forEach(s=>s.classList.remove('active'));
 slides[slideIndex].classList.add('active');
-slideIndex = (slideIndex + 1) % slides.length;
-setTimeout(startSlideshow, 2000);
+slideIndex=(slideIndex+1)%slides.length;
+setTimeout(startSlideshow,2000);
 }
+
 function final(){
 document.body.innerHTML =
 "<div style='margin-top:200px;text-align:center'>" +
@@ -175,14 +175,6 @@ document.body.innerHTML =
 "<h2>Vishal ❤️ Avilasha</h2>" +
 "</div>";
 }
-
-
-setTimeout(()=>{
-location.href = location.href.split('?')[0] + "?restart=" + new Date().getTime();
-},6000);
-}
-
-
 
 </script>
 
