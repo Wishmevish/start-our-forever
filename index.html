@@ -80,7 +80,7 @@ font-size:18px;
 <h2>We met in 2019… just friends.</h2>
 <h3>On 9 Jan 2025… we finally spoke our hearts.</h3>
 <h3>From endless calls… to endless memories.</h3>
-  <div id="slideshow">
+ <div id="slideshow">
 <img src="photo1.jpg">
 <img src="photo2.jpg">
 <img src="photo3.jpg">
@@ -88,11 +88,13 @@ font-size:18px;
 <img src="photo5.jpg">
 <img src="photo6.jpg">
 <img src="photo7.jpg">
-<button onclick="next('s6','song4')">Continue</button>
 </div>
+  <button onclick="next('s6','song4')">Continue</button>
+</div>   <!-- CLOSE Screen 5 -->
 
 <!-- Screen 6 -->
 <div id="s6" class="screen">
+
 <h2>The way you pamper me like a child… makes me feel I found home.</h2>
 <h3>I want to grow old, build everything, and live life with you and our families.</h3>
 <button onclick="next('s7','song5')">Continue</button>
@@ -121,9 +123,13 @@ play(song);
 }
 
 function play(song){
-document.querySelectorAll('audio').forEach(a=>a.pause());
+document.querySelectorAll('audio').forEach(a=>{
+a.pause();
+a.currentTime = 0;
+});
 if(song) document.getElementById(song).play();
 }
+
 
 function check1(){
 if(document.getElementById('q1').value.toLowerCase()=="college")
@@ -135,12 +141,11 @@ let v=document.getElementById('q2').value.toLowerCase();
 if(v=="puki"||v=="bubu")
 next('s4','song3');
 }
-
 function check3(){
-if(document.getElementById('q3').value.toLowerCase()=="bike")
+if(document.getElementById('q3').value.toLowerCase()=="bike"){
 next('s5','song4');
 setTimeout(startSlideshow, 500);
-
+}
 }
 let slideIndex = 0;
 
