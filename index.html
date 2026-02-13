@@ -102,7 +102,8 @@ font-size:18px;
 <div id="s7" class="screen">
 <h1>Tumko pata hai na tum mere liye kya ho?</h1>
 <h1>Sath rahogi mere humesha?</h1>
-<button onclick="alert('Our forever begins today ❤️')">YES</button>
+<button onclick="final()">YES</button>
+
 </div>
 
 <audio id="song1" src="song1.mp3"></audio>
@@ -138,6 +139,8 @@ next('s4','song3');
 function check3(){
 if(document.getElementById('q3').value.toLowerCase()=="bike")
 next('s5','song4');
+setTimeout(startSlideshow, 500);
+
 }
 let slideIndex = 0;
 
@@ -147,6 +150,13 @@ slides.forEach(s => s.classList.remove('active'));
 slides[slideIndex].classList.add('active');
 slideIndex = (slideIndex + 1) % slides.length;
 setTimeout(startSlideshow, 2000);
+}
+function final(){
+document.body.innerHTML =
+"<div style='margin-top:200px;text-align:center'>" +
+"<h1 style='font-size:55px;color:#ff3366;'>Our Forever Begins Today ❤️</h1>" +
+"<h2>Vishal ❤️ Avilasha</h2>" +
+"</div>";
 }
 
 </script>
