@@ -126,14 +126,21 @@ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 play(song);
 }
-
 function play(song){
 document.querySelectorAll('audio').forEach(a=>{
 a.pause();
 a.currentTime = 0;
 });
-if(song) document.getElementById(song).play();
+
+if(song){
+let audio = document.getElementById(song);
+let playPromise = audio.play();
+if(playPromise !== undefined){
+playPromise.catch(()=>{});  // prevents browser autoplay error from stopping script
 }
+}
+}
+
 
 
 function check1(){
