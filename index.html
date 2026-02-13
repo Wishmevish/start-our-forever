@@ -44,6 +44,18 @@ input{
 padding:10px;
 font-size:18px;
 }
+ .heart{
+position:fixed;
+color:#ff3366;
+font-size:24px;
+animation:floatUp 4s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
 </style>
 </head>
 
@@ -174,7 +186,18 @@ document.body.innerHTML =
 "<h1 style='font-size:55px;color:#ff3366;'>Our Forever Begins Today ❤️</h1>" +
 "<h2>Vishal ❤️ Avilasha</h2>" +
 "</div>";
+
+setInterval(()=>{
+let h=document.createElement('div');
+h.innerHTML="❤️";
+h.className="heart";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(20+Math.random()*40)+"px";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),4000);
+},300);
 }
+
 
 </script>
 
